@@ -4,14 +4,18 @@
 
 # https://wiki.hypr.land/Configuring/Variables/#input
 input {
-    kb_layout = {{ .hyprland.input.kb_layout }}
-    kb_variant = {{ .hyprland.input.kb_variant }}
+    kb_layout = us,ru
+    kb_variant =
     kb_model =
-    kb_options =
+    kb_options = grp:caps_toggle
     kb_rules =
 
     follow_mouse = 1
-    sensitivity = {{ .hyprland.input.sensitivity }}
+    sensitivity = -0.3
+    
+    # Middle mouse button scroll
+    scroll_method = on_button_down
+    scroll_button = 274
 
     touchpad {
         natural_scroll = {{ .hyprland.input.natural_scroll }}

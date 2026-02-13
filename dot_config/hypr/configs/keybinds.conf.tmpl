@@ -14,21 +14,27 @@ $browser = {{ .hyprland.browser }}
 {{- end }}
 
 # Basic binds
-bind = $mainMod, Q, exec, $terminal
-bind = $mainMod, C, killactive,
+bind = $mainMod, Return, exec, $terminal
+bind = $mainMod, Q, killactive,
+bind = $mainMod SHIFT, Q, exit,
 bind = $mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, V, togglefloating,
 bind = $mainMod, R, exec, $menu
 bind = $mainMod, F, fullscreen, 0
 bind = $mainMod, P, pseudo,
-bind = $mainMod, J, togglesplit,
 
-# Screenshot binds
-bind = $mainMod, Print, exec, grim -g "$(slurp)" - | wl-copy
-bind = , Print, exec, grim - | wl-copy
-bind = $mainMod SHIFT, S, exec, grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
-bind = SHIFT, Print, exec, grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+# Minimize/unminimize window (using special workspace as scratchpad)
+bind = $mainMod, N, togglespecialworkspace, minimize
+bind = $mainMod, N, movetoworkspace, +0
+bind = $mainMod, N, togglespecialworkspace, minimize
+bind = $mainMod, N, movetoworkspace, special:minimize
+bind = $mainMod, N, togglespecialworkspace, minimize
+
+# Screenshot binds with flameshot
+bind = , Print, exec, XDG_CURRENT_DESKTOP=sway flameshot gui
+bind = $mainMod, Print, exec, XDG_CURRENT_DESKTOP=sway flameshot gui
+bind = $mainMod SHIFT, S, exec, XDG_CURRENT_DESKTOP=sway flameshot gui
 
 # Clipboard history
 bind = $mainMod, Period, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
