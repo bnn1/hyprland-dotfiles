@@ -1,0 +1,17 @@
+################
+### MONITORS ###
+################
+
+# See https://wiki.hypr.land/Configuring/Monitors/
+# Format: monitor=name,resolution@refresh,position,scale
+
+# Primary monitor
+monitor = ,{{ .hyprland.monitors.primary }}
+
+{{- if hasKey .hyprland.monitors "secondary" }}
+# Secondary monitor
+monitor = ,{{ .hyprland.monitors.secondary }}
+{{- end }}
+
+# Fallback for unknown monitors
+monitor = Unknown-1,disabled
