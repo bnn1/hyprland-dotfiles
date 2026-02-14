@@ -1,0 +1,41 @@
+# Chezmoi configuration file
+# See https://www.chezmoi.io/reference/configuration-file/
+
+[data]
+    # User information
+    name = "bnn1"
+    hostname = "{{ .chezmoi.hostname }}"
+    
+    # Hyprland configuration
+    [data.hyprland]
+        terminal = "kitty"
+        fileManager = "dolphin"
+        menu = "wofi --show drun"
+        browser = "firefox"
+        
+        # Monitor configuration (edit these for your setup)
+        [data.hyprland.monitors]
+            primary = "preferred,auto,1"
+            # Add more monitors as needed:
+            # secondary = "1920x1080@60,auto,1"
+        
+        # Workspace configuration
+        defaultWorkspaces = 10
+        
+        # Appearance
+        [data.hyprland.theme]
+            borderSize = 2
+            gaps_in = 5
+            gaps_out = 20
+            rounding = 10
+            
+            # Colors (RGBA format)
+            activeBorder = "rgba(33ccffee) rgba(00ff99ee) 45deg"
+            inactiveBorder = "rgba(595959aa)"
+            
+        # Input settings
+        [data.hyprland.input]
+            kb_layout = "us"
+            kb_variant = ""
+            sensitivity = 0.0
+            natural_scroll = false
